@@ -1,6 +1,7 @@
 const mongoose = require('../database');
 const bcrypt = require('bcryptjs');
 
+//Creates Users Table
 const UserSchema = new mongoose.Schema({
     name: {
         type: String,
