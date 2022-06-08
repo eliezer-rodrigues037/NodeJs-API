@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-
+//Mapeia todas as controllers, na pasta controllers, (pasta atual), diferentes de aqruivos que começam com '.' e com nome 'index.js', e importam os modulos, enviando o app.
 module.exports = app => {
     fs 
         .readdirSync(__dirname)

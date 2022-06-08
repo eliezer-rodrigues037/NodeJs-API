@@ -1,14 +1,16 @@
 const nodemailer = require('nodemailer');
-const {host, port, user, pass} = require('../config/mail');
 const hbs = require('nodemailer-express-handlebars');
 const path = require('path');
+const {host, port, user, pass} = require('../config/mail'); //Arquivo com as configurações de autenticação
 
+//Carrega no nodemailer as configurações no arquivo mail.json
 const transport = nodemailer.createTransport({
     host,
     port,
     auth: { user, pass}
 });
 
+//Configuração do nodemailer.
 transport.use('compile', hbs({
     viewEngine: {
         extname: '.html', // handlebars extension
