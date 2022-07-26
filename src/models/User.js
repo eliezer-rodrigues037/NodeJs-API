@@ -1,5 +1,5 @@
-const mongoose = require('../database');
-const bcrypt = require('bcryptjs');
+const mongoose = require("../database");
+const bcrypt = require("bcryptjs");
 
 //Creates Users Table
 const UserSchema = new mongoose.Schema({
@@ -17,7 +17,7 @@ const UserSchema = new mongoose.Schema({
         type: String,
         select: false,
     },
-    passwordResetExpires:{
+    passwordResetExpires: {
         type: Date,
         select: false,
     },
@@ -29,14 +29,14 @@ const UserSchema = new mongoose.Schema({
     createdAt: {
         type: Date,
         default: Date.now,
-    }
+    },
 });
 
-UserSchema.pre('save', async function(next){
+UserSchema.pre("save", async function (next) {
     const hash = await bcrypt.hash(this.password, 10);
     this.password = hash;
     next();
-})
+});
 
-const User = mongoose.model('User', UserSchema);
+const User = mongoose.model("User", UserSchema);
 module.exports = User;
